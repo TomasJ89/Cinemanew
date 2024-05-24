@@ -4,6 +4,7 @@ const logout = document.getElementById("logout");
 const form = document.getElementById('movie-form');
 const back = document.getElementById("back");
 const close = document.querySelector(".close");
+const MoviesContainer = document.getElementById('moviesList');
 const oneMovie = document.querySelector(".oneMovie");
 const moviesSection = document.querySelector(".movies-section");
 
@@ -25,7 +26,6 @@ close.onclick = () => {
 };
 
 function renderMovies() {
-    const MoviesContainer = document.getElementById('moviesList');
     const movies = getMovies();
     MoviesContainer.innerHTML = '';
     movies.forEach(movie => {
