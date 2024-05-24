@@ -17,7 +17,7 @@ logout.onclick = () => {
     window.location.href = 'index.html';
 };
 
-!admin ? addMovies.classList.add("d-none") : "";
+!admin ? addMovies.classList.add("d-none") :  form.classList.remove("d-none");
 addMovies.onclick = () => {
     form.classList.remove("d-none");
 };
@@ -70,10 +70,12 @@ function renderMovies() {
 
             oneMovie.innerHTML = `
                 <h3>"${selectMovie.title}"</h3>
-                <div class="d-flex">
+                <div class="d-flex position-relative">
                     <div class="movieImage">
                         <img src="${selectMovie.image}" alt="${selectMovie.title}">
                     </div>
+                    <div class="infoEmpty">Empty</div>
+                    <div class="infoReserved">Reserved</div>
                     <div class="seats d-flex gap-2 flex-wrap justify-content-center"></div>
                 </div>
                 <div class="btn btn-dark" id="reservation">${buttonText}</div>
@@ -97,6 +99,8 @@ function renderMovies() {
                         if (reservedSeats.includes(seat.id)) {
                             seat.style.backgroundColor = "#ff4b4b";
                             reservedSeats = reservedSeats.filter(reservedSeat => reservedSeat !== seat.id);
+                        } else {
+                            alert("This seat is not reserved")
                         }
                     } else {
                         // User reserves seat
